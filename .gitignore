@@ -1,0 +1,8 @@
+**/.env.d
+
+.DS_Store
+cache
+
+**/*.swp
+
+.env
