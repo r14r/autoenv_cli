@@ -6,3 +6,6 @@ cache
 **/*.swp
 
 .env
+**/.env.d
+**/.env
+
