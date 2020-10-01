@@ -3,7 +3,7 @@
 	set -u
 
 #------------------------------------------------------------------------------------------
-	_DEPLOY_VERSION=1.0.0-01
+	_DEPLOY_VERSION=1.0.0-02
 
 #------------------------------------------------------------------------------------------
 	HERE="$PWD"
@@ -246,7 +246,7 @@ run_info() {
 
 #------------------------------------------------------------------------------------------
 run_intro() {
-	colorize HEADER $SELF - A tool to extend direnv to customize your development environments
+	colorize HEADER $SELF - A tool to extend autoenv to customize your development environments
 
 	exit 0
 }
@@ -269,7 +269,7 @@ run_help() {
 
 update <TYPE>			<DIRECTION>
 update [all|script|config]	[""|from-master|from-deploy]
-	Updates script (direnv_cli) and files  (.env, $DIRENV_NAME_CONFIG)
+	Updates script (autoenv_cli) and files  (.env, $DIRENV_NAME_CONFIG)
 
 	Default for TYPE is 'all'. Default for DIRECTION is 'from-master'
 
@@ -282,7 +282,7 @@ update [all|script|config]	[""|from-master|from-deploy]
 
 update <TYPE>			<DIRECTION>
 deploy [all|scrint|env|config] [""|to-master|to-deploy]
-	Deploys script (direnv_cli) and files  (.env, $DIRENV_NAME_CONFIG)
+	Deploys script (autoenv_cli) and files  (.env, $DIRENV_NAME_CONFIG)
 
 	Default for TYPE is 'all'. Default for DIRECTION is 'from-master'
 
@@ -696,7 +696,7 @@ run_check() {
 #------------------------------------------------------------------------------------------
 install_check() {
 	if [[ ! -n "$DIRENV_HOME" ]]; then
-		error "direnv not setup correct. Missing DIRENV_HOME"
+		error "autoenv not setup correct. Missing DIRENV_HOME"
 	fi
 }
 
@@ -949,8 +949,6 @@ run_init() {
 		echo "$DIRENV_USER" >$_DIRENV_FILE_SSHUSR
 		echo "r14r"         >$_DIRENV_FILE_SSHUSR
 	fi
-
-	direnv allow
 }
 
 #------------------------------------------------------------------------------------------
@@ -1216,11 +1214,11 @@ ssh_agent_stop() {
 		config-install)			config_install										;;
 		config-save)			config_save;										;;
 
-		env-install)			env_install										;;
-		install/env)			env_install										;;
+		env-install)			env_install											;;
+		install/env)			env_install											;;
 		env-load)				env_load											;;
 		env-edit)				env_edit											;;
-		env-install)			env_install										;;
+		env-install)			env_install											;;
 		env-save)				env_save;											;;
 
 		list)					version_get											;;
@@ -1234,6 +1232,6 @@ ssh_agent_stop() {
 
 		MISSING)				run_help ""											;;
 
-		*)					# Unknown option/parameter '$OPT_CMD'"
-							direnv $OPT_CMD											;;
+		*)						echo "Unknown option/parameter '$OPT_CMD'"			;;
 	esac
+
