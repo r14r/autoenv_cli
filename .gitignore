@@ -1,11 +1,8 @@
-**/.env.d
+**/.autoenv.d
+**/.autoenv
 
 .DS_Store
 cache
 
 **/*.swp
-
-.env
-**/.env.d
-**/.env
 
